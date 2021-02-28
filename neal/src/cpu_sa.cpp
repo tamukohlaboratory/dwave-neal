@@ -213,18 +213,18 @@ double get_state_energy(
 // @param energies a double array of size num_samples. Will be overwritten by
 //        this function as energies are filled in.
 // @param num_samples the number of samples to get.
-// @param h vector of h or field value on each variable
+// @param h vector of h or field value on each variable (b_i)
 // @param coupler_starts an int vector containing the variables of one side of
-//        each coupler in the problem
+//        each coupler in the problem (i of w_ij)
 // @param coupler_ends an int vector containing the variables of the other side 
-//        of each coupler in the problem
+//        of each coupler in the problem (j of w_ij)
 // @param coupler_weights a double vector containing the weights of the couplers
-//        in the same order as coupler_starts and coupler_ends
+//        in the same order as coupler_starts and coupler_ends (w_ij)
 // @param sweeps_per_beta The number of sweeps to perform at each beta value.
 //        Total number of sweeps is `sweeps_per_beta` * length of
-//        `beta_schedule`.
+//        `beta_schedule`. (number of updates for each temperature)
 // @param beta_schedule A list of the beta values to run `sweeps_per_beta`
-//        sweeps at.
+//        sweeps at. (list of temperatures)
 // @param interrupt_callback A function that is invoked between each run of simulated annealing
 //        if the function returns True then it will stop running.
 // @param interrupt_function A pointer to contents that are passed to interrupt_callback.
