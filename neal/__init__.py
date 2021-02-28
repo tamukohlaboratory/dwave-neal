@@ -19,5 +19,8 @@ from __future__ import absolute_import
 from neal.sampler import *
 import neal.sampler
 
+from neal.cbm_sampler import *
+import neal.cbm_sampler
+
 from neal.package_info import __version__
 import neal.package_info

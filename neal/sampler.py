@@ -105,6 +105,7 @@ class SimulatedAnnealingSampler(dimod.Sampler, dimod.Initialized):
                            }
         self.properties = {'beta_schedule_options': ('linear', 'geometric')
                            }
+        self.annealer = sa.simulated_annealing
 
     def sample(self, bqm, beta_range=None, num_reads=None, num_sweeps=1000,
                beta_schedule_type="geometric", seed=None, interrupt_function=None,
@@ -255,7 +256,7 @@ class SimulatedAnnealingSampler(dimod.Sampler, dimod.Initialized):
             raise ValueError("Beta schedule type {} not implemented".format(beta_schedule_type))
 
         # run the simulated annealing algorithm
-        samples, energies = sa.simulated_annealing(
+        samples, energies = self.annealer(
             num_reads, ldata, irow, icol, qdata,
             num_sweeps_per_beta, beta_schedule,
             seed, initial_states_array, interrupt_function)
